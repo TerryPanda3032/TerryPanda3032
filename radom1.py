@@ -14,15 +14,19 @@ plt.scatter(Axis_x,Axis_y)
 ####################################
 model=keras.Sequential()
 model.add(layers.Dense(1,input_dim=1))
-model.add(layers.Dense(2,input_dim=1))
+model.add(layers.Dense(2,input_dim=3))
+model.add(layers.Dense(3,input_dim=1))
 model.summary()
 ######################################
-model.compile(optimizer="adam", loss="mse")
+model.compile(optimizer="sgd", loss="mse")
 #######################################
-model.fit(Axis_x,Axis_y,epochs=100000,batch_size=150)
+model.fit(Axis_x,Axis_y,epochs=10000,batch_size=300)
 model.predict(Axis_x)
 plt.plot(Axis_x,model.predict(Axis_x))
+plt.scatter(Axis_x,model.predict(Axis_x))
 plt.show()
+
+
 
 
 
