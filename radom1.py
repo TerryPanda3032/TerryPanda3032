@@ -4,6 +4,7 @@ import keras
 from keras.layers import*
 from keras import layers
 import numpy as np
+from keras import regularizers
 ####################################
 print(" import==100%")
 Axis_x=np.linspace(0, 100,30)
@@ -14,9 +15,9 @@ plt.plot(Axis_x,Axis_y)
 ####################################
 model=keras.Sequential()
 model.add(layers.Dense(1,input_dim=1))
-model.add(layers.Dense(6,input_dim=1))
-model.add(layers.Dense(5,input_dim=1))
-model.add(layers.Dense(3,input_dim=1))
+model.add(layers.Dense(64,input_dim=1))
+model.add(layers.Dense(64,input_dim=1))
+model.add(layers.Dense(3,input_dim=1,activity_regularizer=regularizers.l2(0)))
 model.summary()
 ######################################
 model.compile(optimizer="adam", loss="mse")
