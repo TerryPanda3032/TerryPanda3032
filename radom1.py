@@ -7,14 +7,16 @@ import numpy as np
 from keras import regularizers
 ####################################
 print(" import==100%")
-Axis_x=np.linspace(0, 100,100)
+Axis_x=np.linspace(0, 100,40)
 Axis_y=0
-Axis_y=3*Axis_x + 6 + np.random.randn(100) * 7
+Axis_y=3*Axis_x + 6 + np.random.randn(40) * 4
 print(Axis_x,Axis_y)
 plt.plot(Axis_x,Axis_y)
 ####################################
 model=keras.Sequential()
-model.add(layers.Dense(1,input_dim=1))
+model.add(layers.Dense(64,input_dim=1))
+model.add(layers.Dense(64,input_dim=64))
+model.add(layers.Dense(1,input_dim=64))
 model.summary()
 ######################################
 model.compile(optimizer="adam", loss="mse")
